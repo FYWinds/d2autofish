@@ -28,15 +28,18 @@ F2::
     Send {E Down}
     Sleep 1.5*1000
     Send {E Up}
+    Text:="|<>*155$19.zzzs00w00S00D7zzXzzlzzszzwTzyDzz00TU07k03szzwTzyDzz7zzXzzlzzszzw00S00D007zzzU" ;2560*1600 E键
+    Text.="|<>*146$14.zzs0601XzszyDzXzs0C03XzszyDzXzszyDzU0M07zzU" ;1920*1200 E键
+    Text.="|<>*125$17.zzz00600A00MzzlzzXzz7zyDzwTzszrk03U077zyDzwTzszzlzzXzz7zy00A00M00zzzU" ;3440*1440 E键
+    ToolTip 等待上钩中, 10, 10
     loop {
-      ToolTip 等待上钩中, 10, 10
       Found:=0
       X:=Y:=""
-      Text:="|<>*155$19.zzzs00w00S00D7zzXzzlzzszzwTzyDzz00TU07k03szzwTzyDzz7zzXzzlzzszzw00S00D007zzzU" ;2560*1600 E键
-      Text.="|<>*146$14.zzs0601XzszyDzXzs0C03XzszyDzXzszyDzU0M07zzU" ;1920*1200 E键
-
-      if (FindText(X, Y, 1200, 950, 1270, 1100, 0.02, 0.02, Text) or FindText(X, Y, 850, 600, 950, 820, 0.05, 0.05, Text)) {
-        ; 检测到收杆，启动收杆
+      ; 完美收杆坐标
+      if (FindText(X, Y, 1200, 950, 1270, 1100, 0.02, 0.02, Text) ; 2k
+        or FindText(X, Y, 850, 600, 950, 820, 0.05, 0.05, Text) ; 1080p
+        or FindText(X, Y,1640, 960, 1700, 1010, 0.04, 0.04, Text)) { ; 3440*1440
+        ; 检测到完美收杆，启动收杆
         Send {E}
         ToolTip 收杆, 10, 10
         Found := 1
